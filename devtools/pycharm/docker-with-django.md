@@ -4,6 +4,7 @@
 - mac 에서만 테스트 해봤음
 - PyCharm 유료버젼만 지원이 됨 참고
 - 대부분 docker composer 로 안내를 해주는데 쉽게 이해하기 힘들어서 추후 다시 도전 하겠음
+- 예제 파일은 https://github.com/iz4blue/pycharm-docker-django 에 등록하였음
 - 틀린 부분이 많을 것이나 일단 올립니다
 
 # Docker for Mac 설치
