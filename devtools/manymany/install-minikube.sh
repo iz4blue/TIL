@@ -10,4 +10,6 @@ mkdir -p /var/tmp/hostpath-provisioner
 mkdir /tmp/hostpath-provisioner
 sudo mount --bind /var/tmp/hostpath-provisioner /tmp/hostpath-provisioner
 
-echo '/var/tmp/hostpath-provisioner /tmp/hostpath-provisioner none defaults,bind 0 0' >> /etc/fstab
+# sudo 돌리기
+# https://www.lesstif.com/lpt/sudo-echo-permission-denied-89556053.html
+echo '/var/tmp/hostpath-provisioner /tmp/hostpath-provisioner none defaults,bind 0 0' | sudo tee -a /etc/fstab
