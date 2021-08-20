@@ -1,3 +1,7 @@
+# 일반
+ - systemd 설정을 user 영역에 활용할 수 있게 함
+ - https://linux.systemv.pe.kr/systemd-user-사용하기/
+
 ```bash
 
 $ mkdir -p ~/.config/systemd/user
