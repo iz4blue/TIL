@@ -12,4 +12,5 @@ wlan.scan()
 wlan.connect('SSID', 'PASSWORD')
 wlan.isconnected()
 wlan.ifconfig()
+
 ```
