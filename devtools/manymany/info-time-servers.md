@@ -11,7 +11,7 @@
 
 
 ## GCP
- - 168.254.168.254 의 IP 로 내부 time server 가 싱크를 맞추고 있음
+ - 169.254.169.254 의 IP 로 내부 time server 가 싱크를 맞추고 있음
 
 
 ## Google 공개 NTP
