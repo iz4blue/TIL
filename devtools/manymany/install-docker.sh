@@ -1,6 +1,9 @@
 #!/bin/bash
 # https://docs.docker.com/engine/install/ubuntu/
 
+# export http_proxy="http://10.178.0.2:80/"
+# export https_proxy="http://10.178.0.2:80/"
+
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 
