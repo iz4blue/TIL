@@ -8,7 +8,7 @@
  - iperf3 가 최신이나 iperf2 만 가능하다고 함 : 아직 명확하게 확인은 하지 못함
 
 ```bash
-sudo wget -O /usr/bin/iperf https://iperf.fr/download/ubuntu/iperf_2.0.9
+sudo curl -o /usr/bin/iperf https://iperf.fr/download/ubuntu/iperf_2.0.9
 sudo chmod +x /usr/bin/iperf
 ```
 
