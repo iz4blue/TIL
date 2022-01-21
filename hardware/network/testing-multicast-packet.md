@@ -34,4 +34,6 @@ $ iperf -c 224.0.1.1 -u -T 32 -t 10 -i 1 -p 54321
 ## 가상머신
  - VirtualBox 됨
  - Docker 됨 : 상황에 따라서 다를 수 있으나 eth0@if434 등으로 잡히는 형태는 되었음
+ - K8S : 같은 Node , 다른 Pod : eth0@if438 과 같은 형태 : 안됨
+
 
