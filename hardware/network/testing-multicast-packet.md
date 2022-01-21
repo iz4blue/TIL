@@ -24,3 +24,13 @@ $ iperf -s -u -B 224.0.1.1 -i 1 -p 54321
 # client
 $ iperf -c 224.0.1.1 -u -T 32 -t 10 -i 1 -p 54321
 ```
+
+# 참고
+
+## 클라우드사 멀티캐스트 동작
+ - AWS EC2 안됨
+ - GCP VirtualMachine 안됨
+
+## 가상머신
+ - VirtualBox 됨
+
