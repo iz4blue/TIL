@@ -17,10 +17,10 @@ sudo chmod +x /usr/bin/iperf
 
 ```bash
 # server
-$ iperf -c 224.0.1.1 -u -T 32 -t 10 -i 1 -p 54321
+$ iperf -s -u -B 224.0.1.1 -i 1 -p 54321
 ```
 
 ```bash
 # client
-$ iperf -s -u -B 224.0.1.1 -i 1 -p 54321
+$ iperf -c 224.0.1.1 -u -T 32 -t 10 -i 1 -p 54321
 ```
