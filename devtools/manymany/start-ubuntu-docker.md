@@ -16,12 +16,12 @@ $ docker exec -it kubeflow bash
 
 ## 기본적을 설치하는 것들
  - sudo : 습관적으로 sudo 를 치니 귀찮아서
- - emacs , yaml-mode , curl , bash-completion
+ - emacs , yaml-mode , curl , bash-completion , less
 
 ```bash
 $ apt update
 $ apt install -y sudo
-$ apt install -y emacs-nox yaml-mode curl bash-completion
+$ apt install -y emacs-nox yaml-mode curl bash-completion less
 ```
 
 ## gcloud install
