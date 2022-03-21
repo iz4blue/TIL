@@ -5,13 +5,15 @@
 # 기본 수행
 
 ## start ubuntu using docker
-
+ - 한글을 쓰기 위해 인코딩 설정을 추가한다.
+ - 또는 Dockerfile 에 ENV LC_ALL=C.UTF-8 을 추가한다.
+ - https://www.joinc.co.kr/w/Site/Linux/Locale
 ```bash
 $ docker run -it -d --name kubeflow ubuntu:20.04 bash
 
 # bash 가 나오며 그냥 창을 닫는다. (그러면 bash 가 계속 떠 있고 종료되지 않는다.)
 
-$ docker exec -it kubeflow bash
+$ docker exec -it -e LC_ALL=C.UTF-8 kubeflow bash
 ```
 
 ## 기본적을 설치하는 것들
