@@ -17,3 +17,9 @@ $ sudo apt-get install -y nodejs
 ```bash
 $ npm install --global yarn
 ```
+
+## 실행시 포트 변경
+ - .env 파일에 PORT=8000 을 쓴다.
+```bash
+$ PORT=8000 npm start
+```
