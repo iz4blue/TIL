@@ -82,3 +82,13 @@ $ certbot certonly \
     -d [도메인주소]
     
 ```
+## 갱신 적용
+ - 갱신을 적용하는 것은 별다른 명령이 존재하지 않음
+ - yaml 로 파일을 생성한 뒤 같은 내용이 update 되는 것이 가장 정확해 보임
+
+```bash
+$ kubectl create secret tls [nginx ingress에서 사용할 TLS이름] \
+    --key /etc/letsencrypt/live/[앞서 지정한 도메인주소]/privkey.pem \
+    --cert /etc/letsencrypt/live/[앞서 지정한 도메인주소]/fullchain.pem \
+    -n default --dry-run=client -o yaml | kubectl apply -f -
+```
