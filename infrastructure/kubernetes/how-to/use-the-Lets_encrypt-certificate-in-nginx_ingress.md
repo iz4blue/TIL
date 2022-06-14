@@ -92,3 +92,55 @@ $ kubectl create secret tls [nginx ingress에서 사용할 TLS이름] \
     --cert /etc/letsencrypt/live/[앞서 지정한 도메인주소]/fullchain.pem \
     -n default --dry-run=client -o yaml | kubectl apply -f -
 ```
+
+
+## 참고로그
+
+### 인증서 갱신
+
+```text
+root@ip-172-31-26-237:/etc/letsencrypt# certbot certonly --manual --preferred-challenges=dns -d [도메인주소]
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator manual, Installer None
+Cert is due for renewal, auto-renewing...
+Renewing an existing certificate
+Performing the following challenges:
+dns-01 challenge for [도메인주소]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+NOTE: The IP of this machine will be publicly logged as having requested this
+certificate. If you're running certbot in manual mode on a machine that is not
+your server, please ensure you're okay with that.
+
+Are you OK with your IP being logged?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please deploy a DNS TXT record under the name
+_acme-challenge.[도메인주소] with the following value:
+
+Xcl9yR2YFgTovY4oHyca1gwoCv7ZkgTOmRzcFgZGgvo
+
+Before continuing, verify the record is deployed.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press Enter to Continue
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/[도메인주소]/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/[도메인주소]/privkey.pem
+   Your cert will expire on 2022-09-12. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+root@ip-172-31-26-237:/etc/letsencrypt#
+```
