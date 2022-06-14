@@ -87,6 +87,8 @@ $ certbot certonly \
  - yaml 로 파일을 생성한 뒤 같은 내용이 update 되는 것이 가장 정확해 보임
 
 ```bash
+# 참고 private.pem 키는 root 로 갱신하게 되니 권한을 변경해준다.
+$ sudo chown ubuntu:ubuntu /etc/letsencrypt/live/matenoc.cloudmt.co.kr/privkey.pem
 $ kubectl create secret tls [nginx ingress에서 사용할 TLS이름] \
     --key /etc/letsencrypt/live/[앞서 지정한 도메인주소]/privkey.pem \
     --cert /etc/letsencrypt/live/[앞서 지정한 도메인주소]/fullchain.pem \
