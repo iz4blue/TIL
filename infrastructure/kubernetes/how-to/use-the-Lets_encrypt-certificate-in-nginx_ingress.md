@@ -73,7 +73,8 @@ spec:
  - 이렇게 처음부터 메뉴얼로 진행을 하게 되면 추후에도 메뉴얼로 하게 된다.
  - 그리고 DNS 의 경우도 항상 새로운 텍스트를 요구 받기 때문에 수동으로 할 수 밖에 없다.
  - https://community.letsencrypt.org/t/will-renewal-always-require-new-dns-acme-challenge-txt/102820
- - 마치고 나면 새롭게 바뀌어 있는 인증서의 내용을 configmap 에 다시 넣어주자
+ - DNS TEXT로 검증하는 경우 TTL 이 길게 되어 있으면 당연히 실패한다. 갱신 테스트 전에 TTL 을 반드시 낮춰주자.
+ - 마치고 나면 새롭게 바뀌어 있는 인증서의 내용을 secret 에 다시 넣어주자
 
 ```bash
 $ certbot certonly \
