@@ -16,6 +16,17 @@ $ docker run -it -d --name kubeflow ubuntu:20.04 bash
 $ docker exec -it -e LC_ALL=C.UTF-8 kubeflow bash
 ```
 
+## start ubuntu using Docker Out Of Docker
+ - 실제 사용하려는 것이 Docker 안에서 ubuntu 를 띄워서 Docker 를 쓰려는 것이면
+ - Host 의 Docker 내용을 공유해서 사용하는 것이 필요하다.
+ - 다만 이 때는 Docker 안에 Docker 를 운영하는 것이 아니니 이미지 작업등이 필요한 경우에만 쓰자
+
+```bash
+$ docker run -it -d -v /var/run/docker.sock:/var/run/docker.sock --name DooD ubuntu:20.04 bash
+
+$ docker exec -it -e LC_ALL=C.UTF-8 DooD bash
+```
+
 ## 기본적을 설치하는 것들
  - sudo : 습관적으로 sudo 를 치니 귀찮아서
  - emacs , yaml-mode , curl , bash-completion , less
