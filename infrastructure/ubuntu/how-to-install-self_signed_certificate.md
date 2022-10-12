@@ -16,5 +16,7 @@ $ sudo bash -c 'cat > /usr/local/share/ca-certificates/k8s/ca.crt'
 $ sudo bash -c 'cat > /usr/local/share/ca-certificates/k8s/cluster.crt'
 $ sudo update-ca-certificates
 
+# 필요시 사용중인 데몬 재시작
 $ sudo systemctl restart docker
+$ sudo systemctl restart containerd
 ```
