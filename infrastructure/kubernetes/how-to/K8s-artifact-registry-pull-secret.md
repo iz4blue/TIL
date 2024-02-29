@@ -1,4 +1,5 @@
 # 개요
+ - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/how-to/private-registry?hl=ko
  - artifact registry 에 접근 가능한 ServiceAccount 를 이용하여
  - Kubernetes 접근 ImagePull Secret 등록하기
  
