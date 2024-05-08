@@ -13,3 +13,19 @@ $ cat KEY-FILE | docker login -u KEY-TYPE --password-stdin \
  - KEY-FILE 은 Service Account 파일
  - KEY-TYPE 은 _json_key : json파일 자체 , _json_key_base64 : base64 로 인코딩한 파일
  - LOCATION 은 asia-northeast3-docker.pkg.dev 와 같은 주소 (여기서는 asia-northeast3 를 가르킴)
+
+# 만약 gcloud 자체가 없다면
+ - 아래의 내용을 다음의 base64 인코딩한 내용으로 채우면 됨
+
+```bash
+$ cat KEY-FILE | base64
+$ mkdir ~/.docker
+$ cat config.json
+{
+        "auths": {
+                "asia-northeast3-docker.pkg.dev": {
+                        "auth": ""
+                }
+         }
+}
+```
