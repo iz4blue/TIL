@@ -85,3 +85,10 @@ deny_info /etc/squid/block_mail.html block_mail_path
 <... 생략 ...>
 
 ```
+
+- curl 을 통한 테스트 방법
+```bash
+$ curl -v -x http://10.1.20.229:3128 \
+    --cacert ./pengtalk.crt \
+    https://englishunt.dooray.com/mail/
+```
