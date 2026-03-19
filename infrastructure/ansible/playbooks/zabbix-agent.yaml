@@ -1,0 +1,81 @@
+---
+- name: Install zabbix agent 7 version
+  hosts: all
+  gather_facts: yes
+  tasks:
+  - name: Get short hostname
+    command: hostname -s
+    register: short_hostname
+    changed_when: false
+
+  # ==========================================
+  # Rocky Linux (RHEL 계열) 전용 구문
+  # ==========================================
+  - name: Install zabbix agent rpm from a remote repo
+    when: ansible_distribution == 'Rocky'
+    ansible.builtin.dnf:
+      name: 'https://repo.zabbix.com/zabbix/7.0/rocky/9/x86_64/zabbix-release-latest-7.0.el9.noarch.rpm'
+      state: present
+      disable_gpg_check: yes
+
+  - name: clear dnf cache
+    when: ansible_distribution == 'Rocky'
+    command: dnf clean all
+
+  - name: Install zabbix agent
+    when: ansible_distribution == 'Rocky'
+    ansible.builtin.dnf:
+      name: zabbix-agent2
+      state: present
+
+  # ==========================================
+  # Ubuntu 전용 구문 (추가된 부분)
+  # ==========================================
+  - name: Download Zabbix release package for Ubuntu
+    when: ansible_distribution == 'Ubuntu'
+    ansible.builtin.get_url:
+      url: "https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-2+ubuntu{{ ansible_distribution_version }}_all.deb"
+      dest: "/tmp/zabbix-release_latest.deb"
+
+  - name: Install Zabbix release package for Ubuntu
+    when: ansible_distribution == 'Ubuntu'
+    ansible.builtin.apt:
+      deb: "/tmp/zabbix-release_latest.deb"
+      state: present
+
+  - name: Update apt cache and install zabbix-agent2
+    when: ansible_distribution == 'Ubuntu'
+    ansible.builtin.apt:
+      name: zabbix-agent2
+      state: present
+      update_cache: yes
+
+  # ==========================================
+  # 공통 설정 및 서비스 재시작 구문
+  # ==========================================
+  - name: Configure zabbix agent active mode
+    blockinfile:
+      create: true
+      path: /etc/zabbix/zabbix_agent2.d/ahnlab-monitor.conf
+      block: |
+        Server=172.29.0.121
+        ServerActive=172.29.0.121
+        Hostname={{ short_hostname.stdout }}
+        HostMetadata="{% for g in group_names if 'project-' in g %}Project:{{ g }} {% endfor %}"
+      marker: "# {mark} ANSIBLE MANAGED BLOCK"
+
+  - name: Restart zabbix-agent2 service
+    ansible.builtin.systemd:
+      name: zabbix-agent2
+      state: restarted
+    register: restart_result
+    failed_when:
+    - restart_result.failed
+    - "'not found' not in restart_result.msg"
+
+  - name: Enable zabbix-agent2 service
+    ansible.builtin.systemd:
+      name: zabbix-agent2
+      state: started
+      enabled: true
+
